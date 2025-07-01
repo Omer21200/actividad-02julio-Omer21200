@@ -1,0 +1,33 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Listado de Estudiantes
+{% endblock %}
+
+{% block content %}
+<tr></tr>
+<h2>Listado de Teléfonos</h2>
+<table id="tabla_datos">
+  <thead>
+    <tr>
+      <th>Teléfono</th>
+      <th>Tipo</th>
+      <th>Estudiante</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for telefono in telefonos %}
+    <tr>
+      <td>{{ telefono.telefono }}</td>
+      <td>{{ telefono.tipo }}</td>
+      <td>{{ telefono.estudiante}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#tabla_datos').DataTable();
+  });
+</script>
+{% endblock %}
