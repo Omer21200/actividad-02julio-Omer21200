@@ -139,5 +139,5 @@ def listar_telefonos(request):
     """
     """
     telefonos = NumeroTelefonico.objects.all()
-    informacion_template = {'telefonos': telefonos, 'numero_telefonos': len(telefonos),'estudiantes': Estudiante.objects.all()}
+    informacion_template = {'telefonos': telefonos, 'numero_telefonos': len(telefonos)}
     return render(request, 'listarTelefono.html', informacion_template)
