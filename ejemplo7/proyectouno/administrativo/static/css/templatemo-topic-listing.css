@@ -205,7 +205,13 @@ strong {
   color: var(--secondary-color);
 }
 
-
+/*---------------------------------------
+  CUSTOM Span               
+-----------------------------------------*/
+.badge-matricula {
+  background: #13547a;
+  color: #fff;
+}
 /*---------------------------------------
   CUSTOM BUTTON               
 -----------------------------------------*/
@@ -932,7 +938,7 @@ blockquote {
   font-weight: var(--font-weight-semibold);
   transition: all 0.3s;
   margin-bottom: 0;
-  padding: 16px 20px;/* Más alto y ancho */
+  padding: auto auto;/* Más alto y ancho */
   margin-top: 24px;
 }
 
@@ -954,8 +960,6 @@ blockquote {
   transition: border-color 0.3s;
 }
 
-
-
 .custom-form input[type="text"] {
   border-radius: var(--border-radius-large);
   border: 2px solid var(--secondary-color);
@@ -972,12 +976,27 @@ blockquote {
   border-color: var(--primary-color);
   background: #f0f8ff;
 }
+.custom-form input[type="number"] {
+  border-radius: var(--border-radius-large);
+  border: 2px solid var(--secondary-color);
+  background: var(--white-color);
+  color: var(--p-color);
+  font-size: var(--p-font-size);
+  padding: 13px 20px;
+  margin-bottom: 24px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.custom-form input[type="number"]:focus {
+  border-color: var(--primary-color);
+  background: #f0f8ff;
+}
 
 .custom-form label {
   margin-bottom: 6px;
   font-weight: var(--font-weight-semibold);
   color: var(--primary-color);
-  display: block;
 }
 
 .custom-form textarea {
@@ -997,6 +1016,36 @@ blockquote {
 .custom-form textarea:focus {
   border-color: var(--primary-color);
   background: #f0f8ff;
+}
+
+.custom-form-row {
+  display: flex;
+  align-items: flex-start; /* Alinea arriba */
+  gap: 16px;               /* Espacio entre label y textarea */
+  margin-bottom: 24px;
+}
+
+.custom-form-row label {
+  margin-bottom: 0;
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary-color);
+  min-width: 120px; /* Ajusta el ancho del label si lo deseas */
+  display: block;
+  padding-top: 6px; /* Opcional: ajusta para mejor alineación */
+}
+
+.custom-form-row textarea {
+  flex: 1;
+  border-radius: var(--border-radius-large);
+  border: 2px solid var(--secondary-color);
+  background: var(--white-color);
+  color: var(--p-color);
+  font-size: var(--p-font-size);
+  padding: 13px 20px;
+  min-height: 120px;
+  outline: none;
+  transition: border-color 0.3s;
+  resize: vertical;
 }
 
 /*---------------------------------------

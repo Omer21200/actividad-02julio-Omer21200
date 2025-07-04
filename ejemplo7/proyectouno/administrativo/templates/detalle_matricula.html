@@ -5,17 +5,18 @@
 {% block content %}
 <h1 class="text-white text-center">Detalle de Matrícula</h1>
 <div class="row justify-content-center">
-    <div class="mb-4 mb-lg-0">
-      
-            <form action="">
+    <div class="col-lg-8 col-12 mb-4 mb-lg-0">
+        <div class="custom-block bg-white shadow-lg">
+            <form action="#" method="post" class="custom-form subscribe-form" role="form">
 
                 <b>Nombre:</b> {{ matricula.estudiante }}
                 <br>
                 <b>Módulo:</b> {{ matricula.modulo }}
-
+                <br>
+                <b>Costo:</b> {{ matricula.costo|floatformat:2 }}
                 <br>
             </form>
-       
+        </div>
     </div>
 </div>
 <br>

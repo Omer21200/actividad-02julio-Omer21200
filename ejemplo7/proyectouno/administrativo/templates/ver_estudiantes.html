@@ -1,0 +1,64 @@
+{% extends "master.html" %}
+
+{% block title %}Listado de Estudiantes{% endblock %}
+
+{% block content %}
+
+<h1 class="text-white text-center">Listado de Estudiantes</h1>
+<div class="mb-3">
+  <h6 class="text-center">Número de Estudiantes: {{ numero_estudiantes }}</h6>
+  <a href="{% url 'crear_estudiante' %}" class="btn custom-btn mt-3 mb-3">Nuevo Estudiante</a>
+</div>
+<div class="row justify-content-center">
+  <div class=" mb-4 mb-lg-0">
+    <div class="custom-block bg-white shadow-lg">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead class="table-light">
+            <tr>
+              <th>Nombre</th>
+              <th>Cedula</th>
+              <th>Edad</th>
+              <th>Tipo</th>
+              <th>Matriculas</th>
+              <th>Costo Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for estudiante in estudiantes %}
+            <tr>
+              <td>{{ estudiante.nombre }} {{estudiante.apellido}}</td>
+              <td>{{ estudiante.cedula }}</td>
+              <td>{{ estudiante.edad }}</td>
+              <td>{{ estudiante.get_tipo_estudiante_display }}</td>
+              <td>
+                {% for matricula in estudiante.obtener_matriculas %}
+                <span class="badge badge-matricula">
+                  {{ matricula.modulo.nombre }} - ${{ matricula.costo|floatformat:2 }}
+                </span>
+                {% empty %}
+                <span class="badge bg-light text-dark">Sin matrículas</span>
+                {% endfor %}
+              </td>
+              <td>
+                <span class="badge badge-matricula">
+                  ${{ estudiante.obtener_costo_total|floatformat:2 }}
+                </span>
+              </td>
+
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="5" class="text-center">No hay estudiantes registrados.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<a href="{% url 'index' %}" class="btn custom-btn custom-border-btn smoothscroll me-4">Inicio</a>
+</div>
+{% endblock %}

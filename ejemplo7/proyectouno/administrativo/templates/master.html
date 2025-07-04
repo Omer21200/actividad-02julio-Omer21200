@@ -14,6 +14,8 @@
   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'css/bootstrap-icons.css' %}" rel="stylesheet">
   <link href="{% static 'css/templatemo-topic-listing.css' %}" rel="stylesheet">
+
+
 </head>
 
 <body id="top">
@@ -24,7 +26,7 @@
       <div class="container">
         <a class="navbar-brand" href="{% url 'index' %}">
           <i class="bi-back"></i>
-          <span>MiAPP</span>
+          <span>SGA UTPL</span>
         </a>
 
         <div class="d-lg-none ms-auto me-4">
@@ -44,12 +46,18 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'crear_matricula' %}">Crear Matrícula</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'ver_estudiantes' %}">Estudiantes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'ver_modulos' %}">Módulos</a>
+            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="menuOpciones" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">Más opciones</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Estudiantes</a></li>
-                <li><a class="dropdown-item" href="#">Reportes</a></li>
+                <li><a class="dropdown-item" href="{% url 'crear_estudiante' %}">Crear Estudiantes</a></li>
+                <li><a class="dropdown-item" href="{% url 'crear_modulo' %}">Crear Modulo</a></li>
               </ul>
             </li>
           </ul>
@@ -71,7 +79,7 @@
     </section>
     <section class="featured-section">
       <div class="container">
-       
+
       </div>
     </section>
 

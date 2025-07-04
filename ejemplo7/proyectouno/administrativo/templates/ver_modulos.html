@@ -1,0 +1,57 @@
+{% extends "master.html" %}
+
+{% block title %}Modulos{% endblock %}
+
+{% block content %}
+<h1 class="text-white text-center">Listado de Módulos</h1>
+<div class="mb-3">
+    <h6 class="text-center">Número de Módulos: {{ numero_modulos }}</h6>
+    <a href="{% url 'crear_modulo' %}" class="btn custom-btn mt-3 mb-3">Nuevo Módulo</a>
+</div>
+<div class="row justify-content-center">
+    <div class="mb-4 mb-lg-0">
+        <div class="custom-block bg-white shadow-lg">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Costo Matricula</th>
+                            <th>Costo Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for modulo in modulos %}
+                        <tr>
+                            <td>Modulo {{ modulo.nombre }}</td>
+
+                            <td>
+                                {% for m in modulo.obtener_matriculas %}
+                                <span class="badge badge-matricula">
+                                    ${{ m.costo|floatformat:2 }}
+                                </span>
+                                {% empty %}
+                                <span class="badge bg-light text-dark">Sin matrículas</span>
+                                {% endfor %}
+                            </td>
+                            <td>
+                                <span class="badge badge-matricula">
+                                    ${{ modulo.obtener_costo_total|floatformat:2 }}
+                                </span>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="1" class="text-center">No hay módulos registrados.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<a href="{% url 'index' %}" class="btn custom-btn custom-border-btn smoothscroll me-4">Inicio</a>
+</div>
+{% endblock %}

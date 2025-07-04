@@ -17,10 +17,10 @@
       <div class="table-responsive">
         <table class="table table-bordered table-hover">
           <thead class="table-light">
-            <tr>
               <th>Estudiante</th>
               <th>Módulo</th>
               <th>Comentario</th>
+              <th>Costo</th>
               <th>Opciones</th>
             </tr>
           </thead>
@@ -34,6 +34,7 @@
               </td>
               <td>{{ e.modulo.nombre }}</td>
               <td>{{ e.comentario }}</td>
+              <td>{{ e.costo|floatformat:2 }}</td>
               <td>
                 <a href="{% url 'detalle_matricula' e.id %}" class="btn btn-invertido mt-3 mb-3">Ver</a>
                 <a href="{% url 'editar_matricula' e.id %}" class="btn custom-btn custom-border-btn ms-3">Editar</a>

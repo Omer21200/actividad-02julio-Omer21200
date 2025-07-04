@@ -1,4 +1,5 @@
 from django.db import models
+from decimal import Decimal
 
 # Create your models here.
 
@@ -26,6 +27,14 @@ class Estudiante(models.Model):
 
     def obtener_matriculas(self):
         return self.lasmatriculas.all()
+    def obtener_costo_total(self):
+        """
+        Retorna el costo total de las matrículas del estudiante
+        """
+        total = Decimal('0.0')
+        for m in self.lasmatriculas.all():
+            total += m.costo
+        return total
         
 
 class Modulo(models.Model):
@@ -46,6 +55,16 @@ class Modulo(models.Model):
 
     def __str__(self):
         return "Módulo: %s" % (self.nombre)
+    def obtener_matriculas(self):
+        return self.lasmatriculas.all()
+    def obtener_costo_total(self):
+        """
+        Retorna el costo total de las matrículas del módulo
+        """
+        total = Decimal('0.0')
+        for m in self.lasmatriculas.all():
+            total += m.costo
+        return total
 
 
 class Matricula(models.Model):
@@ -56,7 +75,7 @@ class Matricula(models.Model):
     modulo = models.ForeignKey(Modulo, related_name='lasmatriculas',
             on_delete=models.CASCADE)
     comentario = models.CharField(max_length=200)
-
+    costo = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     # Agregar costo
 
     def __str__(self):
