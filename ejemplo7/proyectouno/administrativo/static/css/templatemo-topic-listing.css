@@ -205,6 +205,48 @@ strong {
   color: var(--secondary-color);
 }
 
+/* Formato general para todas las tablas con clase .table */
+.table {
+  background: var(--white-color);
+  border-radius: var(--border-radius-medium);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(19, 84, 122, 0.08);
+}
+
+.table th {
+  background: var(--primary-color);
+  color: var(--white-color);
+  font-family: var(--title-font-family);
+  font-size: 18px;
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+  border: none;
+}
+
+.table td {
+  vertical-align: middle;
+  text-align: center;
+  font-size: 16px;
+  color: var(--dark-color);
+  border: none;
+}
+
+.table tr:nth-child(even) {
+  background: var(--section-bg-color);
+}
+
+.table tr:hover {
+  background: var(--secondary-color);
+  color: var(--white-color);
+  transition: background 0.2s;
+}
+
+.table .btn {
+  font-size: 14px;
+  padding: 6px 14px;
+  border-radius: var(--border-radius-large);
+}
+
 /*---------------------------------------
   CUSTOM Span               
 -----------------------------------------*/
@@ -227,9 +269,9 @@ strong {
 }
 
 .btn-invertido:hover {
-  background: #80d0c7;
+  background: #13547a;
   color: #fff;
-  border-color: #80d0c7;
+  border-color: #13547a;
 }
 
 .custom-btn {

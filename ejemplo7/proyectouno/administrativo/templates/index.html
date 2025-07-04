@@ -12,11 +12,12 @@
   <a href="{% url 'crear_matricula' %}" class="btn custom-btn mt-3 mb-3">Nueva Matrícula</a>
 </div>
 <div class="row justify-content-center">
-  <div class="mb-4 mb-lg-0">
+  <div class=" col-lg-20 col-18 mb-4 mb-lg-0">
     <div class="custom-block bg-white shadow-lg">
       <div class="table-responsive">
-        <table class="table table-bordered table-hover">
-          <thead class="table-light">
+       <table class="table table-bordered table-hover" id="matriculasTable">
+          <thead>
+            <tr>
               <th>Estudiante</th>
               <th>Módulo</th>
               <th>Comentario</th>
@@ -28,7 +29,7 @@
             {% for e in matriculas %}
             <tr>
               <td>
-                {{ e.estudiante.nombre }}<br>
+                {{e.estudiante.apellido}} {{ e.estudiante.nombre }} <br>
                 {{ e.estudiante.get_tipo_estudiante_display }}<br>
                 <a href="{% url 'detalle_estudiante' e.estudiante.id %}" class="btn btn-link btn-sm">Ver +</a>
               </td>
@@ -37,12 +38,12 @@
               <td>{{ e.costo|floatformat:2 }}</td>
               <td>
                 <a href="{% url 'detalle_matricula' e.id %}" class="btn btn-invertido mt-3 mb-3">Ver</a>
-                <a href="{% url 'editar_matricula' e.id %}" class="btn custom-btn custom-border-btn ms-3">Editar</a>
+                <a href="{% url 'editar_matricula' e.id %}" class="btn btn-invertido mt-3 mb-3">Editar</a>
               </td>
             </tr>
             {% empty %}
             <tr>
-              <td colspan="4" class="text-center">No hay matrículas registradas.</td>
+              <td colspan="5" class="text-center">No hay matrículas registradas.</td>
             </tr>
             {% endfor %}
           </tbody>
@@ -52,4 +53,20 @@
   </div>
 </div>
 
+{% endblock %}
+{% block extra_js %}
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
+<script>
+$(document).ready(function() {
+    var table = $('#matriculasTable').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
+        },
+    });
+    $('#searchTable').on('keyup', function() {
+        table.search(this.value).draw();
+    });
+});
+</script>
 {% endblock %}

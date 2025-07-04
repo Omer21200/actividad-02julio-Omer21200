@@ -12,7 +12,7 @@
     <div class="mb-4 mb-lg-0">
         <div class="custom-block bg-white shadow-lg">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover" id="modulosTable">
                     <thead class="table-light">
                         <tr>
                             <th>Nombre</th>
@@ -24,7 +24,6 @@
                         {% for modulo in modulos %}
                         <tr>
                             <td>Modulo {{ modulo.nombre }}</td>
-
                             <td>
                                 {% for m in modulo.obtener_matriculas %}
                                 <span class="badge badge-matricula">
@@ -42,7 +41,7 @@
                         </tr>
                         {% empty %}
                         <tr>
-                            <td colspan="1" class="text-center">No hay módulos registrados.</td>
+                            <td colspan="3" class="text-center">No hay módulos registrados.</td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -54,4 +53,17 @@
 <br>
 <a href="{% url 'index' %}" class="btn custom-btn custom-border-btn smoothscroll me-4">Inicio</a>
 </div>
+{% endblock %}
+{% block extra_js %}
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
+<script>
+$(document).ready(function() {
+    $('#modulosTable').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
+        }
+    });
+});
+</script>
 {% endblock %}

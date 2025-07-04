@@ -10,10 +10,10 @@
   <a href="{% url 'crear_estudiante' %}" class="btn custom-btn mt-3 mb-3">Nuevo Estudiante</a>
 </div>
 <div class="row justify-content-center">
-  <div class=" mb-4 mb-lg-0">
+  <div class=" col-auto mb-4 mb-lg-0">
     <div class="custom-block bg-white shadow-lg">
-      <div class="table-responsive">
-        <table class="table table-bordered table-hover">
+      <div class="table-responsive p-0">
+        <table class="table table-bordered table-hover" id="estudiantesTable">
           <thead class="table-light">
             <tr>
               <th>Nombre</th>
@@ -45,11 +45,10 @@
                   ${{ estudiante.obtener_costo_total|floatformat:2 }}
                 </span>
               </td>
-
             </tr>
             {% empty %}
             <tr>
-              <td colspan="5" class="text-center">No hay estudiantes registrados.</td>
+              <td colspan="6" class="text-center">No hay estudiantes registrados.</td>
             </tr>
             {% endfor %}
           </tbody>
@@ -61,4 +60,17 @@
 <br>
 <a href="{% url 'index' %}" class="btn custom-btn custom-border-btn smoothscroll me-4">Inicio</a>
 </div>
+{% endblock %}
+{% block extra_js %}
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
+<script>
+$(document).ready(function() {
+    $('#estudiantesTable').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
+        }
+    });
+});
+</script>
 {% endblock %}
